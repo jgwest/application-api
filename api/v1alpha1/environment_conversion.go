@@ -23,10 +23,18 @@ func (src *Environment) ConvertTo(dstRaw conversion.Hub) error {
 
 	dst.ObjectMeta = src.ObjectMeta
 
-	dst.Spec.DisplayName = "DisplayName111"
+	dst.Spec.DisplayName = src.Spec.DisplayName + "-converted"
 	dst.Spec.DeploymentStrategy = v1beta1.DeploymentStrategyType(src.Spec.DeploymentStrategy)
-	dst.Spec.ParentEnvironment = "ParentEnvironment111"
-	dst.Spec.Tags = src.Spec.Tags
+	dst.Spec.ParentEnvironment = src.Spec.ParentEnvironment + "-converted"
+
+	dst.Spec.Configuration.Env = []v1beta1.EnvVarPair{}
+
+	// var newConfiguration v1beta1.EnvironmentConfiguration
+
+	// newConfiguration
+
+	// dst.Spec.Tags = src.Spec.Tags
+	// dst.Spec.Configuration
 
 	return nil
 }
@@ -45,6 +53,7 @@ func (dst *Environment) ConvertFrom(srcRaw conversion.Hub) error {
 	dst.Spec.DeploymentStrategy = DeploymentStrategyType(src.Spec.DeploymentStrategy)
 	dst.Spec.ParentEnvironment = "ParentEnvironment222"
 	dst.Spec.Tags = src.Spec.Tags
+	dst.Spec.Configuration.Env = []EnvVarPair{}
 
 	return nil
 }

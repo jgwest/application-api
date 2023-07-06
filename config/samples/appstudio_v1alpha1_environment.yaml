@@ -2,6 +2,15 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: Environment
 metadata:
   name: environment-sample
-spec: 
+spec:
+
+  deploymentStrategy: AppStudioAutomated
+  displayName: meow
+
+  configuration:
+    env:
+      - name: My_STG_ENV
+        value: "100"
+
   # Add fields here
 #  foo: bar
