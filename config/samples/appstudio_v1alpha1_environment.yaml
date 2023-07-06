@@ -2,6 +2,6 @@ apiVersion: appstudio.redhat.com/v1alpha1
 kind: Environment
 metadata:
   name: environment-sample
-spec:
+spec: 
   # Add fields here
-  foo: bar
+#  foo: bar
