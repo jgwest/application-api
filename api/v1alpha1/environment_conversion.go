@@ -27,8 +27,9 @@ func (src *Environment) ConvertTo(dstRaw conversion.Hub) error {
 	dst.Spec.DeploymentStrategy = v1beta1.DeploymentStrategyType(src.Spec.DeploymentStrategy)
 	dst.Spec.ParentEnvironment = src.Spec.ParentEnvironment + "-converted"
 
-	dst.Spec.Configuration.Env = []v1beta1.EnvVarPair{}
+	dst.Spec.Configuration.Env = []v1beta1.EnvVarPair{{Name: "hello", Value: "hi"}}
 
+	fmt.Println("1111 post:", dst)
 	// var newConfiguration v1beta1.EnvironmentConfiguration
 
 	// newConfiguration
@@ -53,7 +54,9 @@ func (dst *Environment) ConvertFrom(srcRaw conversion.Hub) error {
 	dst.Spec.DeploymentStrategy = DeploymentStrategyType(src.Spec.DeploymentStrategy)
 	dst.Spec.ParentEnvironment = "ParentEnvironment222"
 	dst.Spec.Tags = src.Spec.Tags
-	dst.Spec.Configuration.Env = []EnvVarPair{}
+	dst.Spec.Configuration.Env = []EnvVarPair{{Name: "hello", Value: "hi"}}
+
+	fmt.Println("2222 post:", dst)
 
 	return nil
 }
