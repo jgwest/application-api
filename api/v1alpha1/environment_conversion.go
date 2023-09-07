@@ -40,6 +40,9 @@ func (src *Environment) ConvertTo(dstRaw conversion.Hub) error {
 
 	// if v1alpha1 version has src.Spec.Configuration.Env field then copy it to v1beta1
 	if src.Spec.Configuration.Env != nil {
+
+		dst.Spec.Configuration.Env = []v1beta1.EnvVarPair{}
+
 		for _, env := range src.Spec.Configuration.Env {
 			dst.Spec.Configuration.Env = append(dst.Spec.Configuration.Env, v1beta1.EnvVarPair(env))
 		}
@@ -90,6 +93,9 @@ func (dst *Environment) ConvertFrom(srcRaw conversion.Hub) error {
 	}
 
 	if src.Spec.Configuration.Env != nil {
+
+		dst.Spec.Configuration.Env = []EnvVarPair{}
+
 		for _, env := range src.Spec.Configuration.Env {
 			dst.Spec.Configuration.Env = append(dst.Spec.Configuration.Env, EnvVarPair(env))
 		}
