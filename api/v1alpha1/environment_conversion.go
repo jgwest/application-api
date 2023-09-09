@@ -74,6 +74,8 @@ func (src *Environment) ConvertTo(dstRaw conversion.Hub) error {
 		}
 	}
 
+	dst.Status.Conditions = src.Status.Conditions
+
 	return nil
 }
 
@@ -125,5 +127,6 @@ func (dst *Environment) ConvertFrom(srcRaw conversion.Hub) error {
 		}
 	}
 
+	dst.Status.Conditions = src.Status.Conditions
 	return nil
 }
